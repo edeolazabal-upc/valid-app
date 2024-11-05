@@ -1,0 +1,55 @@
+<form [formGroup]="myForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-error *ngIf="myForm.get('nombre')?.invalid && (myForm.get('nombre')?.dirty || myForm.get('nombre')?.touched)">
+        {{ myForm.get('nombre')?.hasError('required') ? 'El nombre es obligatorio' : '' }}
+        {{ myForm.get('nombre')?.hasError('minlength') ? 'Mínimo 3 caracteres' : '' }}
+        {{ myForm.get('nombre')?.hasError('maxlength') ? 'Máximo 50 caracteres' : '' }}
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput formControlName="email" type="email">
+      <mat-error *ngIf="myForm.get('email')?.invalid && (myForm.get('email')?.dirty || myForm.get('email')?.touched)">
+        {{ myForm.get('email')?.hasError('required') ? 'El correo es obligatorio' : '' }}
+        {{ myForm.get('email')?.hasError('email') ? 'Formato de correo inválido' : '' }}
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Edad</mat-label>
+      <input matInput formControlName="edad" type="number">
+      <mat-error *ngIf="myForm.get('edad')?.invalid && (myForm.get('edad')?.dirty || myForm.get('edad')?.touched)">
+        {{ myForm.get('edad')?.hasError('required') ? 'La edad es obligatoria' : '' }}
+        {{ myForm.get('edad')?.hasError('min') ? 'Debe ser al menos 18 años' : '' }}
+        {{ myForm.get('edad')?.hasError('max') ? 'Debe ser menos de 100 años' : '' }}
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput formControlName="fechaNacimiento" type="date">
+      <mat-error *ngIf="myForm.get('fechaNacimiento')?.invalid && (myForm.get('fechaNacimiento')?.dirty || myForm.get('fechaNacimiento')?.touched)">
+        {{ myForm.get('fechaNacimiento')?.hasError('required') ? 'La fecha es obligatoria' : '' }}
+        {{ myForm.get('fechaNacimiento')?.hasError('fechaInvalida') ? 'La fecha debe ser anterior a hoy' : '' }}
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-radio-group formControlName="genero">
+      <mat-radio-button value="masculino">Masculino</mat-radio-button>
+      <mat-radio-button value="femenino">Femenino</mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="myForm.get('genero')?.invalid && (myForm.get('genero')?.dirty || myForm.get('genero')?.touched)">
+      El género es obligatorio.
+    </mat-error>
+  
+    <mat-checkbox formControlName="terminos">Acepto los términos y condiciones</mat-checkbox>
+    <mat-error *ngIf="myForm.get('terminos')?.invalid && (myForm.get('terminos')?.dirty || myForm.get('terminos')?.touched)">
+      Debes aceptar los términos.
+    </mat-error>
+  
+    <button mat-raised-button color="primary" [disabled]="myForm.invalid">Guardar</button>
+  </form>
+  
