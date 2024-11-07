@@ -8,6 +8,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SubComponent } from "../sub/sub.component";
 
 @Component({
   selector: 'app-form',
@@ -18,11 +21,14 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatToolbarModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatSelectModule,
     MatCheckboxModule,
     MatRadioModule,
     MatButtonModule,
-  ],
+    SubComponent
+],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })

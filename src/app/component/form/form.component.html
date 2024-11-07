@@ -30,7 +30,9 @@
   
     <mat-form-field appearance="fill">
       <mat-label>Fecha de Nacimiento</mat-label>
-      <input matInput formControlName="fechaNacimiento" type="date">
+      <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="myForm.get('fechaNacimiento')?.invalid && (myForm.get('fechaNacimiento')?.dirty || myForm.get('fechaNacimiento')?.touched)">
         {{ myForm.get('fechaNacimiento')?.hasError('required') ? 'La fecha es obligatoria' : '' }}
         {{ myForm.get('fechaNacimiento')?.hasError('fechaInvalida') ? 'La fecha debe ser anterior a hoy' : '' }}
@@ -51,5 +53,11 @@
     </mat-error>
   
     <button mat-raised-button color="primary" [disabled]="myForm.invalid">Guardar</button>
+
+      <!-- Llamada al componente SubComponent -->
+    <app-sub></app-sub>
+
+    <!-- Router outlet para cargar sub-rutas -->
+    <router-outlet></router-outlet>
   </form>
   
